@@ -28,8 +28,12 @@ fill(selectedColor);
 rect(350,50,300,200);
 }
 
+void mouseDragged(){
+line(pmouseX,pmouseY,mouseX,mouseY);
+}
+
 void mousePressed(){
-if(mouseY>30 && mouseY<350){
+if(mouseY>30 && mouseY<350 && mouseX<50 && mouseX>10){
 slideY=mouseY;
 }
 
