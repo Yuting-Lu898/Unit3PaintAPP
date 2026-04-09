@@ -21,8 +21,8 @@ float slideY=30;
 float lineSize=0;
 int wid=40,leng=20;
 int x=50,y=0;
-int row1=x, row2=x+wid,row3=row2+wid,row4=row3+wid;
-int col1=y,col2=col1+leng, col3=col2+leng, col4=col3+leng, col5=col4+leng; 
+int row1=x;// row2=x+wid,row3=row2+wid,row4=row3+wid,row5=row4+wid,row6=row5+wid,row7=row6+wid,row8=row7+wid,row9=row8+wid,row10=row9+wid;
+int col1=y,col2=col1+leng, col3=col2+leng, col4=col3+leng, col5=col4+leng, col6=col5+leng, col7=col6+leng, col8=col7+leng, col9=col8+leng, col10=col9+leng; 
 void setup(){
   size(700,400);
 }
@@ -50,41 +50,49 @@ popStyle();
 }
 //select color----------------------------
 void mouseReleased(){
- select(row1,col1,red);
- 
- select(row1,col2,blue);
- 
- select(row1,col3,yellow);
- 
- select(row1,col4,green);
- 
- select(row1,col5,orange);
+ select(row1,col1,red,lightRed,darkRed);//1
+ select(row1,col2,orange,lightOrange,darkOrange);//2
+ select(row1,col3,yellow,lightYellow,darkYellow);//3
+ select(row1,col4,green,lightGreen,darkGreen);//4
+ select(row1,col5,mutedGreen,leaf,moss);//5
+ select(row1,col6,blue,lightBlue,darkBlue);//6
+ select(row1,col7,dustyBlue,sky,ocean);//7
+ select(row1,col8,purple,lightPurple,darkPurple);//8
+ select(row1,col9,softGold,paleYellow,softTerracotta);//9
+ select(row1,col10,skinLight,skinMid,skinDark);//10
 }
 //all button-----------------------
 void button1(){
-rectButton(row1,col1,red);
-
-rectButton(row1,col2,blue);
-
-rectButton(row1,col3,yellow);
-
-rectButton(row1,col4,green);
-
-rectButton(row1,col5,orange);
-stroke(0);
+  rectButton(row1,col1,red,lightRed,darkRed);//1
+  rectButton(row1,col2,orange,lightOrange,darkOrange);//2
+  rectButton(row1,col3,yellow,lightYellow,darkYellow);//3
+  rectButton(row1,col4,green,lightGreen,darkGreen);//4
+  rectButton(row1,col5,mutedGreen,leaf,moss);//5
+  rectButton(row1,col6,blue,lightBlue,darkBlue);//6
+  rectButton(row1,col7,dustyBlue,sky,ocean);//7
+  rectButton(row1,col8,purple,lightPurple,darkPurple);//8
+  rectButton(row1,col9,softGold,paleYellow,softTerracotta);//9
+  rectButton(row1,col10,skinLight,skinMid,skinDark);//10
+  stroke(0);
 }
 //rectbutton-----------------
-void rectButton(float x, float y, color z){
-  if( mouseX>x && mouseX<x+wid && mouseY>y && mouseY<y+leng) {
-   stroke(white);
- }
- else {
-   stroke(0);
- }
-fill(z);
-rect(x,y,wid,leng);
+void rectButton(float x, float y, color a,color b,color c){
+    bu(x,y,a);
+    bu(x+wid,y,b);
+    bu(x+wid*2,y,c);
 }
-
+//------------------
+void bu(float x,float y, color a){
+ if( mouseX>x && mouseX<x+wid && mouseY>y && mouseY<y+leng) {
+       stroke(white);
+     }
+     else {
+       stroke(0);
+     }
+    fill(a);
+    rect(x,y,wid,leng);
+}
+//--------------
 void back(){
 fill(200);
 rect(0,0,200,400);
@@ -103,8 +111,15 @@ void mousePressed(){
   }
 }
 //selectedColor---------------------------------------------
-void select(int x,int y,color a){
-if(mouseX>x && mouseX<wid+x&&mouseY>y && mouseY<leng+y) {
-   selectedColor=a;
+void select(int x,int y,color a,color b, color c){
+  se(x,y,a);
+  se(x+wid,y,b);
+  se(x+2*wid,y,c);
  }
+ //
+ void se(int x,int y,color a){
+   if(mouseX>x && mouseX<wid+x&&mouseY>y && mouseY<leng+y) {
+     selectedColor=a;
+   }
  }
+ //finish---------------------------------
