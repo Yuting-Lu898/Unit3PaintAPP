@@ -1,3 +1,4 @@
+
 color white=#FFFFFF, black=#000000;
 color lightGray = #D3D3D3;color darkGray = #444444;
 color warmGray = #E8E4D8;color coolGray = #B0BEC5;color darkCharcoal = #2E2E2E;
@@ -18,19 +19,21 @@ color selectedColor;
 
 float slideY=30;
 
+PImage allBlack;
+
 float lineSize=0;
-int wid=40,leng=20;
+int wid=40,leng=20,imgx=120,imgy=60;
 int x=50,y=0;
 int row1=x;// row2=x+wid,row3=row2+wid,row4=row3+wid,row5=row4+wid,row6=row5+wid,row7=row6+wid,row8=row7+wid,row9=row8+wid,row10=row9+wid;
 int col1=y,col2=col1+leng, col3=col2+leng, col4=col3+leng, col5=col4+leng, col6=col5+leng, col7=col6+leng, col8=col7+leng, col9=col8+leng, col10=col9+leng; 
 void setup(){
   size(700,400);
+  allBlack=loadImage("Haka.jpg");
 }
 
 void draw(){
 stroke(0);
 back();
-
 //slide
 slide(slideY);
 //button
@@ -39,6 +42,7 @@ button1();
 //drawBoard
 fill(selectedColor);
 rect(650,0,50,30);
+Image(200,0,allBlack);
 }
 //draw----------------------------
 void mouseDragged(){
@@ -123,3 +127,14 @@ void select(int x,int y,color a,color b, color c){
    }
  }
  //finish---------------------------------
+ void Image(int x, int y, PImage a){
+   
+ if(mouseX>x&&mouseX<x+wid&&mouseY<y&&mouseY<y+leng){
+  imgx=imgx*3;imgy=imgy*3;
+ }
+ else{
+ 
+ }
+  image(a,x,y,imgx,imgy);
+ 
+ }
